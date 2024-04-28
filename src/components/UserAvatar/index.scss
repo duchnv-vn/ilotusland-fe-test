@@ -1,0 +1,7 @@
+.user-avatar {
+  @apply cursor-pointer;
+
+  .fallback {
+    @apply rounded-full bg-secondary;
+  }
+}

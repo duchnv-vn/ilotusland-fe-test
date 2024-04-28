@@ -1,0 +1,126 @@
+.main-layout {
+  @apply bg-primary;
+  @apply flex min-h-screen flex-col;
+  @apply py-8;
+
+  .header {
+    @apply flex justify-between border-b-gray-300 border-b pb-4 px-8 shadow-md;
+
+    .left-bar {
+      @apply flex gap-6 items-center;
+
+      .menu-button {
+        @apply h-10 w-10 bg-secondary p-3 rounded-full border-0 shadow-none;
+
+        .icon {
+          @apply text-reverse-primary;
+        }
+      }
+
+      .project-name-container {
+        @apply my-auto;
+
+        .project-name {
+          @apply font-bold text-lg;
+        }
+      }
+
+      .board-type-switch-buttons {
+        @apply flex flex-row items-center gap-2;
+
+        .switch-button {
+          @apply w-14 h-10;
+
+          .icon {
+            @apply text-reverse-primary w-5 h-5;
+          }
+
+          &.active {
+            @apply border-blue-500;
+
+            .icon {
+              @apply text-blue-500;
+            }
+          }
+        }
+      }
+
+      .search-bar {
+        @apply flex items-center;
+
+        .search-input {
+          @apply rounded h-10 w-56 border-gray-400 border-2 shadow-md;
+        }
+      }
+
+      .member-list {
+        @apply flex items-center;
+
+        .member-avatar {
+          @apply border-4 border-white border-solid cursor-pointer;
+
+          &:not(&:first-child) {
+            @apply ml-[-12px];
+          }
+
+          .fallback {
+            @apply rounded-full bg-secondary;
+          }
+        }
+      }
+    }
+
+    .right-bar {
+      @apply flex gap-6;
+
+      .list-all-team {
+        @apply flex items-center px-5 w-full;
+
+        .label {
+          @apply font-bold mr-2 text-nowrap;
+        }
+      }
+
+      .group-by-button {
+        @apply min-w-40;
+
+        .label {
+          @apply font-bold border-gray-400 border-0 text-nowrap;
+        }
+      }
+
+      .create-task-button {
+        @apply w-full bg-blue-500 text-white font-bold px-4;
+
+        &:hover {
+          @apply bg-blue-700;
+        }
+
+        .icon {
+          @apply mr-2;
+        }
+
+        .label {
+          @apply text-white;
+        }
+      }
+
+      .notification-button {
+        @apply relative;
+
+        .button-1 {
+          @apply rounded-full w-10 h-10 bg-secondary border-0;
+        }
+
+        .quantity-number {
+          @apply bg-red-500 px-2 py-1 rounded-full text-xs;
+          @apply absolute top-[-8px] right-[-8px];
+
+          .label {
+            @apply text-white;
+          }
+        }
+      }
+    }
+  }
+}

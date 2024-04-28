@@ -7,15 +7,36 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "commit": "git-cz"
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,md,mdx,css,scss}\"",
+    "commit": "git-cz",
+    "deploy:preview": "bash scripts/vercel-preview-deploy.sh"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/themes": "^3.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "i": "^0.3.7",
+    "lucide-react": "^0.376.0",
+    "mobx": "^6.12.3",
+    "mobx-react": "^9.1.1",
+    "mobx-react-lite": "^4.0.7",
     "mongodb": "^6.5.0",
     "next": "14.2.3",
+    "npm": "^10.6.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^14.2.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -23,6 +44,7 @@
     "eslint-config-next": "14.2.3",
     "git-cz": "^4.9.0",
     "postcss": "^8",
+    "prettier": "^3.2.5",
     "sass": "^1.75.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

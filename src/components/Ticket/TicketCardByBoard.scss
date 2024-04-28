@@ -1,0 +1,92 @@
+.ticket-card {
+  @apply p-3 min-h-36;
+  @apply border border-solid shadow-md rounded cursor-pointer;
+  @apply bg-primary border-gray-300;
+  @apply flex flex-col;
+
+  &:hover {
+    @apply bg-secondary;
+  }
+
+  .ticket-header {
+    @apply flex justify-between items-center;
+    @apply mb-2;
+
+    .ticket-id {
+      @apply flex flex-row items-center gap-2;
+
+      .id {
+        @apply text-reverse-primary font-medium;
+      }
+
+      .icon {
+        @apply text-green-500;
+      }
+    }
+
+    .time-tracking {
+      @apply flex flex-row items-center gap-4;
+
+      .preview-button {
+        @apply text-blue-500 font-bold text-xs;
+      }
+
+      .time {
+        @apply flex flex-row items-center gap-2;
+
+        .icon {
+          @apply text-blue-500;
+        }
+
+        .text {
+          @apply text-reverse-primary text-sm;
+          @apply min-w-12;
+        }
+      }
+    }
+  }
+
+  .ticket-title {
+    @apply mb-2;
+
+    .text {
+      @apply font-bold text-reverse-primary;
+    }
+  }
+
+  .ticket-footer {
+    @apply flex justify-between items-center;
+    @apply mt-auto mb-0;
+
+    .left-section {
+      @apply flex flex-row items-center gap-3;
+
+      .request-type {
+        @apply px-2 py-1;
+        @apply rounded;
+      }
+
+      .priority {
+      }
+    }
+
+    .right-section {
+      .user-avatar {
+      }
+    }
+  }
+
+  &.overDueDate {
+    @apply bg-red-100 border-red-600;
+
+    .ticket-header {
+      .time-tracking {
+        .time {
+          .icon {
+            @apply text-red-500;
+          }
+        }
+      }
+    }
+  }
+}

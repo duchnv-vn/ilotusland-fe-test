@@ -1,11 +1,6 @@
 {
-  "extends": [
-    "next",
-    "prettier"
-  ],
-  "settings": {
-    "next": {
-      "rootDir": "src/"
-    }
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react-hooks/exhaustive-deps": "off"
   }
 }

@@ -1,0 +1,13 @@
+.stage-headers {
+  @apply flex justify-between gap-4;
+  @apply mt-8 mb-4 mx-8;
+
+  .item {
+    @apply w-full px-4 py-5;
+    @apply bg-secondary rounded;
+
+    .title {
+      @apply font-bold text-reverse-primary;
+    }
+  }
+}
