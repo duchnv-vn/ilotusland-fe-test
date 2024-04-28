@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import { BoardGroupBy } from '@/common/enum/board';
 import {
   Select,
@@ -6,12 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useStores } from '@/store/storeProvider';
 
 const labelFormat = 'Group By: {value}';
-
-type GroupByButtonProps = {
-  currentGroupBy: BoardGroupBy;
-};
 
 const SelectOptions = () => {
   return Object.values(BoardGroupBy).map((option, index) => {
@@ -23,8 +21,15 @@ const SelectOptions = () => {
   });
 };
 
-const GroupByButton = ({ currentGroupBy }: GroupByButtonProps) => {
-  const label = labelFormat.replace('{value}', BoardGroupBy[currentGroupBy]);
+const GroupByButton = () => {
+  const {
+    CommonStore: { groupBy },
+  } = useStores();
+
+  const label = labelFormat.replace(
+    '{value}',
+    BoardGroupBy[groupBy as BoardGroupBy],
+  );
 
   return (
     <div className="group-by-button button-1">
@@ -40,4 +45,4 @@ const GroupByButton = ({ currentGroupBy }: GroupByButtonProps) => {
   );
 };
 
-export default GroupByButton;
+export default observer(GroupByButton);

@@ -1,10 +1,10 @@
-import KanbanBoard from '@/components/KanbanBoard';
 import MainLayout from '@/components/MainLayout';
+import ProjectBoard from '@/components/ProjectBoard';
 
 export default function Home() {
   return (
     <MainLayout>
-      <KanbanBoard />
+      <ProjectBoard />
     </MainLayout>
   );
 }

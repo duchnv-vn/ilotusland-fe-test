@@ -1,3 +1,5 @@
+'use client';
+import { observer } from 'mobx-react-lite';
 import {
   IconDefinition,
   faBorderAll,
@@ -11,16 +13,15 @@ type SwitchButtonProps = {
   icon: IconDefinition;
   boardType: number;
   isActive: boolean;
+  setBoardType: (boardType: number) => void;
 };
 
-type BoardTypeSwitchButtonsProps = {
-  currentType: number;
-};
-
-const SwitchButton = ({ boardType, icon, isActive }: SwitchButtonProps) => {
-  const { CommonStore: commonStore } = useStores();
-  const { setBoardType } = commonStore;
-
+const SwitchButton = ({
+  boardType,
+  icon,
+  isActive,
+  setBoardType,
+}: SwitchButtonProps) => {
   return (
     <Button
       {...{
@@ -32,27 +33,31 @@ const SwitchButton = ({ boardType, icon, isActive }: SwitchButtonProps) => {
   );
 };
 
-const BoardTypeSwitchButtons = ({
-  currentType,
-}: BoardTypeSwitchButtonsProps) => {
+const BoardTypeSwitchButtons = () => {
+  const {
+    CommonStore: { setBoardType, boardType },
+  } = useStores();
+
   return (
     <div className="board-type-switch-buttons">
       <SwitchButton
         {...{
           icon: faBorderAll,
           boardType: BoardTypes.board,
-          isActive: currentType === BoardTypes.board,
+          isActive: boardType === BoardTypes.board,
+          setBoardType,
         }}
       />
       <SwitchButton
         {...{
           icon: faBars,
           boardType: BoardTypes.list,
-          isActive: currentType === BoardTypes.list,
+          isActive: boardType === BoardTypes.list,
+          setBoardType,
         }}
       />
     </div>
   );
 };
 
-export default BoardTypeSwitchButtons;
+export default observer(BoardTypeSwitchButtons);

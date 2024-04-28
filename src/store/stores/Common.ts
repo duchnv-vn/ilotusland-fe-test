@@ -1,11 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 import { BoardGroupBy, BoardTypes } from '@/common/enum/board';
 import { ThemeModes } from '@/common/enum/theme';
+import { CommonStoreData } from '../type';
 
 class CommonStore {
-  themeMode: ThemeModes = ThemeModes['theme-light'];
-  boardType: BoardTypes = BoardTypes['board'];
-  groupBy: BoardGroupBy = BoardGroupBy['User'];
+  themeMode: ThemeModes | string = '';
+  boardType: BoardTypes = 0;
+  groupBy: BoardGroupBy | string = '';
 
   constructor() {
     makeAutoObservable(this);
@@ -19,10 +20,16 @@ class CommonStore {
     this.boardType = type;
   };
 
-  hydrate = (data: { mode: ThemeModes; boardType: BoardTypes }) => {
-    if (!data) return;
-    this.setThemeMode(data.mode);
-    this.setBoardType(data.boardType);
+  setGroupBy = (type: BoardGroupBy) => {
+    this.groupBy = type;
+  };
+
+  hydrate = ({ boardType, mode, groupBy }: CommonStoreData) => {
+    mode && this.setThemeMode(mode);
+    typeof boardType === 'number' &&
+      !isNaN(boardType) &&
+      this.setBoardType(boardType);
+    groupBy && this.setGroupBy(groupBy);
   };
 }
 

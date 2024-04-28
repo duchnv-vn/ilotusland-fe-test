@@ -1,13 +1,10 @@
+import { observer } from 'mobx-react-lite';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { User } from '@/common/type/user.type';
+import { useStores } from '@/store/storeProvider';
 
 type MemberAvatarProps = {
   src: string;
   alt: string;
-};
-
-type MemberListProps = {
-  members: User[];
 };
 
 const MemberAvatar = ({ src, alt }: MemberAvatarProps) => {
@@ -19,8 +16,10 @@ const MemberAvatar = ({ src, alt }: MemberAvatarProps) => {
   );
 };
 
-const ProjectMembersList = (props: MemberListProps) => {
-  const { members } = props;
+const ProjectMembersList = () => {
+  const {
+    ProjectStore: { members },
+  } = useStores();
 
   return (
     <div className="member-list">
@@ -39,4 +38,4 @@ const ProjectMembersList = (props: MemberListProps) => {
   );
 };
 
-export default ProjectMembersList;
+export default observer(ProjectMembersList);

@@ -10,3 +10,9 @@ export const TicketPriorityIcon = {
   Medium: faGripLines,
   Low: faArrowDownLong,
 } as Record<string, IconDefinition>;
+
+export const DATETIME_FORMAT = {
+  ddmmyyyy: 'DD/MM/YYYY',
+};
+
+export const HCM_TIMEZONE = 'Asia/Ho_Chi_Minh';

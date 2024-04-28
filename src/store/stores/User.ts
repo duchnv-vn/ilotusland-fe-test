@@ -1,10 +1,10 @@
 import { makeAutoObservable } from 'mobx';
-import { dummyAsignee0 } from './dummy-data';
 import { User } from '@/common/type/user.type';
+import { UserStoreData } from '../type';
 
 class UserStore {
-  user: User = dummyAsignee0;
-  notificationNumber: number = 10;
+  user: User = {} as User;
+  notificationNumber: number = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -14,9 +14,13 @@ class UserStore {
     this.user = user;
   };
 
-  hydrate = (data: { user: User }) => {
-    if (!data) return;
-    this.setUser(data.user);
+  setNotiNumber = (num: number) => {
+    this.notificationNumber = num;
+  };
+
+  hydrate = ({ notificationNumber, user }: UserStoreData) => {
+    user && this.setUser(user);
+    notificationNumber && this.setNotiNumber(notificationNumber);
   };
 }
 

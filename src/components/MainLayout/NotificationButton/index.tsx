@@ -1,11 +1,13 @@
+import { observer } from 'mobx-react-lite';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import Button from '@/components/ui/button';
+import { useStores } from '@/store/storeProvider';
 
-type Props = {
-  notificationNumber: number;
-};
+const NotificationButton = () => {
+  const {
+    UserStore: { notificationNumber },
+  } = useStores();
 
-const NotificationButton = ({ notificationNumber }: Props) => {
   return (
     <div className="notification-button">
       <Button {...{ icon: faBell, className: 'button-1' }} />
@@ -16,4 +18,4 @@ const NotificationButton = ({ notificationNumber }: Props) => {
   );
 };
 
-export default NotificationButton;
+export default observer(NotificationButton);

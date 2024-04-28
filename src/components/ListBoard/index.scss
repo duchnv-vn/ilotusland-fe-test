@@ -1,0 +1,48 @@
+.list-board {
+  .head-name {
+    @apply text-lg font-bold;
+  }
+
+  .ticket-row {
+    &:hover {
+      @apply bg-secondary cursor-pointer;
+    }
+
+    .ticket-name {
+      .icon {
+        @apply text-green-500 w-4 h-4 mr-4;
+      }
+
+      .name {
+        @apply font-bold;
+      }
+    }
+
+    .ticket-priority {
+      .icon {
+        @apply mr-2;
+      }
+
+      .label {
+        @apply font-bold;
+      }
+    }
+
+    .status {
+      @apply w-fit px-3 py-2 rounded;
+      @apply font-bold;
+    }
+
+    .asignee {
+      @apply flex items-center;
+
+      .user-avatar {
+        @apply mr-2;
+      }
+
+      .name {
+        @apply text-nowrap;
+      }
+    }
+  }
+}

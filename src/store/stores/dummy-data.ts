@@ -1,5 +1,3 @@
-import { TicketDetail } from '@/common/type/ticket.type';
-
 export const dummyProject = {
   _id: 0,
   name: 'Viet An Services',
@@ -80,7 +78,7 @@ export const dummyAsignee1 = {
 
 export const dummyProjectMembers = [dummyAsignee0, dummyAsignee1];
 
-export const dummyTickets = [
+export const dummyTicketsByBoard = [
   {
     _id: 0,
     title: '[AAA] Ticket 111',
@@ -206,4 +204,47 @@ export const dummyTickets = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   },
-] as TicketDetail[];
+];
+
+export const dummyTicketsByList = [
+  {
+    _id: 0,
+    title: '[AAA] Ticket 111',
+    asignee: dummyAsignee0,
+    stageId: 0,
+    priority: 1,
+    dueDate: new Date('2024-04-29').getTime(),
+  },
+  {
+    _id: 1,
+    title: '[AAA] Ticket 222',
+    asignee: dummyAsignee0,
+    stageId: 2,
+    priority: 2,
+    dueDate: new Date('2024-05-29').getTime(),
+  },
+  {
+    _id: 2,
+    title: '[AAA] Ticket 333',
+    asignee: dummyAsignee1,
+    stageId: 4,
+    priority: 0,
+    dueDate: new Date('2024-05-01').getTime(),
+  },
+  {
+    _id: 3,
+    title: '[BBB] Ticket 444',
+    asignee: dummyAsignee1,
+    stageId: 1,
+    priority: 1,
+    dueDate: new Date('2024-09-29').getTime(),
+  },
+  {
+    _id: 4,
+    title: '[BBB] Ticket 555',
+    asignee: dummyAsignee1,
+    stageId: 3,
+    priority: 2,
+    dueDate: new Date('2024-03-30').getTime(),
+  },
+];

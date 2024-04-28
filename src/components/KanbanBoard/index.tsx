@@ -6,7 +6,7 @@ import GroupByUser from './GroupByTicketBoard/GroupByUser';
 
 const TicketBoards = {
   [BoardGroupBy.User]: GroupByUser,
-};
+} as Record<string, () => JSX.Element>;
 
 const KanbanBoard = () => {
   const { CommonStore } = useStores();

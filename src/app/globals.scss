@@ -30,7 +30,8 @@ body {
   }
 }
 
-.project-request-type {
+.project-request-type,
+.project-stage {
   &-0 {
     @apply bg-blue-500 text-white;
   }

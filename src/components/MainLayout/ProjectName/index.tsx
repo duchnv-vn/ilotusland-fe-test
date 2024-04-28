@@ -1,9 +1,12 @@
-type Props = {
-  name: string;
-};
+import { observer } from 'mobx-react-lite';
+import { useStores } from '@/store/storeProvider';
 
-const ProjectName = (props: Props) => {
-  const { name } = props;
+const ProjectName = () => {
+  const {
+    ProjectStore: {
+      project: { name },
+    },
+  } = useStores();
 
   return (
     <div className="project-name-container">
@@ -12,4 +15,4 @@ const ProjectName = (props: Props) => {
   );
 };
 
-export default ProjectName;
+export default observer(ProjectName);

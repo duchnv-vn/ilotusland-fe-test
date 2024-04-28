@@ -1,0 +1,9 @@
+.loading-contaier {
+  @apply absolute top-0;
+  @apply w-full h-screen;
+  @apply flex justify-center items-center;
+
+  .icon {
+    @apply w-16 h-16;
+  }
+}

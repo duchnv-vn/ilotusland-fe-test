@@ -4,10 +4,9 @@ import {
   TicketByBoard,
   TicketByList,
 } from '@/common/type/ticket.type';
-import { dummyTickets } from './dummy-data';
-
+import { TicketStoreData } from '../type';
 class TicketsStore {
-  ticketsByBoard: TicketByBoard[] = dummyTickets;
+  ticketsByBoard: TicketByBoard[] = [];
   ticketsByList: TicketByList[] = [];
 
   constructor() {
@@ -18,8 +17,12 @@ class TicketsStore {
     return this.ticketsByBoard.length;
   }
 
-  setTickets = (tickets: TicketByBoard[]) => {
+  setTicketsByBoard = (tickets: TicketByBoard[]) => {
     this.ticketsByBoard = tickets;
+  };
+
+  setTicketsByList = (tickets: TicketByList[]) => {
+    this.ticketsByList = tickets;
   };
 
   groupTicketsByUser = (): GroupTicketsByUser[] => {
@@ -44,9 +47,9 @@ class TicketsStore {
     return Object.values(ticketGroups);
   };
 
-  hydrate = (data: { tickets: TicketByBoard[] }) => {
-    if (!data) return;
-    this.setTickets(data.tickets);
+  hydrate = ({ ticketsByBoard, ticketsByList }: TicketStoreData) => {
+    ticketsByBoard && this.setTicketsByBoard(ticketsByBoard);
+    ticketsByList && this.setTicketsByList(ticketsByList);
   };
 }
 
