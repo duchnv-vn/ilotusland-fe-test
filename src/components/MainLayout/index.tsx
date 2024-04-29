@@ -1,22 +1,18 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Theme } from '@radix-ui/themes';
 import { observer } from 'mobx-react-lite';
 import { useStores } from '@/store/storeProvider';
 import Header from './Header';
+import TicketDetailModalWrapper from '../TicketDetailModalWrapper';
 
 import '@radix-ui/themes/styles.css';
 import './index.scss';
-import TicketDetailModalWrapper from '../TicketDetailModalWrapper';
 
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const {
-    CommonStore: { themeMode, setIsOpenTicketModal },
+    CommonStore: { themeMode },
   } = useStores();
-
-  // useEffect(() => {
-  //   setIsOpenTicketModal(true);
-  // }, []);
 
   return (
     <Theme>

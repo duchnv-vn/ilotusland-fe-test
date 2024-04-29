@@ -1,10 +1,12 @@
 .modal-content {
-  @apply flex flex-col gap-2;
-  @apply min-w-[75%] min-h-[800px];
+  @apply flex flex-col;
+  @apply min-w-[75%];
+  @apply bg-white; // NEED MODIFY
 
   .close-button {
-    @apply flex justify-end;
+    @apply mr-0 ml-auto;
     @apply border-0 outline-0;
+    @apply text-red-500;
 
     .icon {
       @apply w-7 h-7;

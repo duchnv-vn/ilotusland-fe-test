@@ -1,3 +1,4 @@
+'use client';
 import { observer } from 'mobx-react-lite';
 import { BoardGroupBy } from '@/common/enum/board';
 import {
@@ -37,7 +38,7 @@ const GroupByButton = () => {
         <SelectTrigger className="label">
           <SelectValue placeholder={label} />
         </SelectTrigger>
-        <SelectContent className="ml-0">
+        <SelectContent>
           <SelectOptions />
         </SelectContent>
       </Select>

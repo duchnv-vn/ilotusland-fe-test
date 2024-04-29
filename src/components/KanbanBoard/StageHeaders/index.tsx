@@ -1,3 +1,5 @@
+'use client';
+import { observer } from 'mobx-react-lite';
 import { ProjectStage } from '@/common/type/project.type';
 import { useStores } from '@/store/storeProvider';
 
@@ -36,4 +38,4 @@ const StageHeaders = () => {
   );
 };
 
-export default StageHeaders;
+export default observer(StageHeaders);

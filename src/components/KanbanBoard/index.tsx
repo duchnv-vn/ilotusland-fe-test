@@ -1,4 +1,5 @@
 'use client';
+import { observer } from 'mobx-react-lite';
 import { useStores } from '@/store/storeProvider';
 import StageHeaders from './StageHeaders';
 import { BoardGroupBy } from '@/common/enum/board';
@@ -20,4 +21,4 @@ const KanbanBoard = () => {
   );
 };
 
-export default KanbanBoard;
+export default observer(KanbanBoard);

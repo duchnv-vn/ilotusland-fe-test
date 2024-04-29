@@ -70,3 +70,29 @@ body {
     @apply text-green-500;
   }
 }
+
+.file-icon {
+  &-pdf {
+    @apply text-red-500;
+  }
+
+  &-doc {
+    @apply text-blue-500;
+  }
+
+  &-excel {
+    @apply text-green-500;
+  }
+
+  &-txt {
+    @apply text-gray-500;
+  }
+
+  &-csv {
+    @apply text-green-700;
+  }
+
+  &-unknown {
+    @apply text-gray-500;
+  }
+}

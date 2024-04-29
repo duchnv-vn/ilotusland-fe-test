@@ -1,5 +1,9 @@
 import { makeAutoObservable } from 'mobx';
-import { Project, ProjectStage } from '@/common/type/project.type';
+import {
+  Project,
+  ProjectRequestType,
+  ProjectStage,
+} from '@/common/type/project.type';
 import { dummyTicketsByBoard } from './dummy-data';
 import { User } from '@/common/type/user.type';
 import { ProjectStoreData } from '../type';
@@ -38,7 +42,13 @@ class ProjectStore {
   };
 
   findStage = (id: number) => {
-    return this.stages.find((stage) => stage.id === id);
+    return this.stages.find((stage) => stage.id === id) as ProjectStage;
+  };
+
+  findRequestType = (id: number) => {
+    return this.project.requestTypes.find(
+      (type) => type.id === id,
+    ) as ProjectRequestType;
   };
 
   hydrate = ({ project, members }: ProjectStoreData) => {

@@ -32,15 +32,15 @@ class TicketsStore {
   groupTicketsByUser = (): GroupTicketsByUser[] => {
     const ticketGroups = this.ticketsByBoard.reduce(
       (groups, ticket) => {
-        const groupyUser = groups[ticket.asignee._id];
+        const groupyUser = groups[ticket.assignee._id];
 
         if (!groupyUser) {
-          groups[ticket.asignee._id] = {
-            user: ticket.asignee,
+          groups[ticket.assignee._id] = {
+            user: ticket.assignee,
             tickets: [ticket],
           };
         } else {
-          groups[ticket.asignee._id].tickets.push(ticket);
+          groups[ticket.assignee._id].tickets.push(ticket);
         }
 
         return groups;

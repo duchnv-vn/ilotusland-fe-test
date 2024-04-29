@@ -1,3 +1,4 @@
+'use client';
 import { observer } from 'mobx-react-lite';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useStores } from '@/store/storeProvider';

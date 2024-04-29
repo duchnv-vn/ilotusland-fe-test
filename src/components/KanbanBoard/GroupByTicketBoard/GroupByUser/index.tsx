@@ -1,4 +1,6 @@
+'use client';
 import { Dispatch, SetStateAction, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { useStores } from '@/store/storeProvider';
 import { GroupTicketsByUser, TicketByBoard } from '@/common/type/ticket.type';
@@ -6,7 +8,6 @@ import { User } from '@/common/type/user.type';
 import UserAvatar from '@/components/UserAvatar';
 import Button from '@/components/ui/button';
 import TicketCardByBoard from '@/components/Ticket/TicketCardByBoard';
-import { ProjectRequestType } from '@/common/type/project.type';
 
 import './index.scss';
 
@@ -50,7 +51,9 @@ const StageBoard = ({
   tickets: TicketByBoard[];
   className: string;
 }) => {
-  const { ProjectStore } = useStores();
+  const {
+    ProjectStore: { findRequestType },
+  } = useStores();
 
   return (
     <div className={`stage-item ${className}`}>
@@ -60,11 +63,7 @@ const StageBoard = ({
             {...{
               ticket: {
                 ...ticket,
-                requestTypeName: (
-                  ProjectStore.project.requestTypes.find(
-                    (type) => type.id === ticket.requestTypeId,
-                  ) as ProjectRequestType
-                ).name,
+                requestTypeName: findRequestType(ticket.requestTypeId).name,
               },
             }}
             key={index}
@@ -128,4 +127,4 @@ const GroupByUser = () => {
   );
 };
 
-export default GroupByUser;
+export default observer(GroupByUser);

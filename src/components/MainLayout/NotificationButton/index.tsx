@@ -1,3 +1,4 @@
+'use client';
 import { observer } from 'mobx-react-lite';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import Button from '@/components/ui/button';

@@ -3,3 +3,12 @@ export enum TicketPriority {
   Medium,
   Low,
 }
+
+export enum AttachedFileType {
+  pdf = 'pdf',
+  doc = 'doc',
+  excel = 'excel',
+  txt = 'txt',
+  csv = 'csv',
+  unknown = 'unknown',
+}
