@@ -1,13 +1,16 @@
 'use client';
+import { useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardCheck, faClock } from '@fortawesome/free-solid-svg-icons';
 import { TicketByBoard } from '@/common/type/ticket.type';
-
-import './TicketCardByBoard.scss';
 import { TicketPriorityIcon } from '@/common/constant';
 import { TicketPriority } from '@/common/enum/ticket';
 import UserAvatar from '../UserAvatar';
-import { useEffect, useState } from 'react';
+import { useStores } from '@/store/storeProvider';
+import { getNowTmp } from '@/utils/date';
+
+import './TicketCardByBoard.scss';
 
 type Props = {
   ticket: TicketByBoard & { requestTypeName: string };
@@ -22,18 +25,31 @@ const TicketCardByBoard: React.FC<Props> = ({ ticket }) => {
     requestTypeName,
     timeTracking,
     dueDate,
-    asignee,
+    assignee,
   } = ticket;
 
   const [isTaskOverDueDate, setIsTaskOverDueDate] = useState(false);
 
+  const {
+    CommonStore: { setIsOpenTicketModal },
+    TicketsStore: { fetchTicketDetail },
+  } = useStores();
+
+  const handleClick = async () => {
+    await fetchTicketDetail(_id);
+    setIsOpenTicketModal(true);
+  };
+
   useEffect(() => {
-    const now = Date.now();
+    const now = getNowTmp();
     setIsTaskOverDueDate(now > dueDate);
   }, []);
 
   return (
-    <div className={`ticket-card ${isTaskOverDueDate && 'overDueDate'}`}>
+    <div
+      className={`ticket-card ${isTaskOverDueDate && 'overDueDate'}`}
+      onClick={handleClick}
+    >
       <div className="ticket-header">
         <div className="ticket-id">
           <FontAwesomeIcon icon={faClipboardCheck} className="icon" />
@@ -63,11 +79,11 @@ const TicketCardByBoard: React.FC<Props> = ({ ticket }) => {
           </div>
         </div>
         <div className="righ-section">
-          <UserAvatar {...{ src: asignee.avatarUrl, alt: asignee.name }} />
+          <UserAvatar {...{ src: assignee.avatarUrl, alt: assignee.name }} />
         </div>
       </div>
     </div>
   );
 };
 
-export default TicketCardByBoard;
+export default observer(TicketCardByBoard);

@@ -6,13 +6,14 @@ export type TicketAttachedFile = {
   name: string;
   type: string;
   url: string;
+  size: string;
 };
 
 export type TicketDetail = {
   _id: number;
   title: string;
   description: string;
-  asignee: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
+  assignee: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
   reporter: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
   customer: Pick<Customer, '_id' | 'name' | 'phoneNumber'>;
   company: Pick<Company, '_id' | 'name' | 'address'>;
@@ -30,7 +31,7 @@ export type TicketDetail = {
 export type TicketByBoard = {
   _id: number;
   title: string;
-  asignee: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
+  assignee: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
   reporter: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
   stageId: number;
   requestTypeId: number;
@@ -42,7 +43,7 @@ export type TicketByBoard = {
 export type TicketByList = {
   _id: number;
   title: string;
-  asignee: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
+  assignee: Pick<User, '_id' | 'name' | 'avatarUrl' | 'email'>;
   stageId: number;
   priority: number;
   dueDate: number;

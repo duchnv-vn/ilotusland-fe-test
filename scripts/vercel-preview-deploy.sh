@@ -2,7 +2,9 @@
 
 source .env
 
-npm run lint
+if [[ $APP_ENV == 'local' ]]; then
+    npm run lint
+fi
 
 vercel . \
     -e MONGODB_URI=$MONGODB_URI \

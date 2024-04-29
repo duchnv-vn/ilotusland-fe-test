@@ -8,7 +8,7 @@ import CommonStore from './stores/Common';
 import { BoardTypes, BoardGroupBy } from '@/common/enum/board';
 import { ThemeModes } from '@/common/enum/theme';
 import {
-  dummyAsignee0,
+  dummyAssignee0,
   dummyProject,
   dummyProjectMembers,
   dummyTicketsByBoard,
@@ -35,7 +35,7 @@ export const StoreWrapper = ({ children }: { children: ReactNode }) => {
     groupBy: BoardGroupBy['User'],
   });
   const UserStoreValues = useStore('UserStore', {
-    user: dummyAsignee0,
+    user: dummyAssignee0,
     notificationNumber: 10,
   });
   const TicketsStoreValues = useStore('TicketsStore', {

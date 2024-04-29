@@ -1,0 +1,225 @@
+.ticket-detail-modal-content {
+  .content-header {
+    @apply flex gap-2 justify-between items-center;
+    @apply border-b border-solid border-b-gray-200;
+    @apply pb-3 mr-10;
+
+    .left-section {
+      @apply max-w-[70%];
+      @apply min-w-[70%];
+
+      .task-title {
+        @apply font-bold text-2xl;
+      }
+    }
+    .right-section {
+      @apply max-w-[30%];
+      @apply min-w-[30%];
+
+      @apply flex gap-5 justify-end items-center;
+
+      .stage {
+        @apply w-fit px-3 py-2 rounded;
+        @apply font-bold;
+      }
+
+      .view-process-button {
+        @apply flex gap-2 items-center;
+
+        .text,
+        .icon {
+          @apply text-blue-500;
+        }
+      }
+    }
+  }
+
+  .content-body {
+    @apply flex gap-2 justify-between;
+    @apply mt-4;
+
+    .left-section {
+      @apply max-w-[65%] min-w-[65%];
+      @apply flex flex-col gap-4;
+
+      .create-info {
+        @apply flex justify-between items-center;
+
+        .user-info {
+          @apply flex items-center gap-2;
+          .inner-info {
+            @apply flex flex-col;
+
+            .name {
+              @apply text-base font-bold;
+            }
+
+            .email {
+              @apply text-sm text-secondary-1;
+            }
+          }
+        }
+
+        .update-date {
+          @apply text-sm text-secondary-1;
+        }
+      }
+
+      .description {
+        .paragraph {
+          @apply whitespace-pre-wrap text-sm;
+        }
+      }
+
+      .attached-files {
+        .title {
+          @apply font-bold  text-xs;
+        }
+
+        .file-list {
+          @apply mt-2;
+
+          .file {
+            @apply flex gap-3 items-center cursor-pointer w-fit;
+
+            .icon {
+              @apply w-7 h-7;
+            }
+
+            .file-info {
+              .name {
+                @apply text-blue-500 font-bold;
+              }
+
+              .size {
+                @apply text-secondary-1 text-sm;
+              }
+            }
+          }
+        }
+      }
+
+      .stage-tabs {
+        .rt-BaseTabList {
+          @apply justify-between gap-5;
+
+          button {
+            @apply min-w-[33%] cursor-pointer;
+
+            span {
+              @apply w-full text-lg font-bold;
+            }
+          }
+        }
+
+        .tab {
+          @apply mt-4;
+          @apply flex flex-col gap-4;
+
+          .assignee {
+            @apply flex items-center gap-4;
+
+            .label {
+              @apply font-bold;
+            }
+
+            .info {
+              @apply flex items-center gap-2 p-1 pr-3 rounded-full;
+              @apply bg-gray-200; // NEED MODIFY
+            }
+          }
+
+          .comment-input {
+            @apply border border-solid border-gray-300 rounded;
+            @apply p-4 min-h-[150px];
+          }
+        }
+      }
+
+      .action-button-wrapper {
+        @apply flex justify-end gap-2;
+
+        .reject-button,
+        .approve-button {
+          @apply px-4 py-2 rounded;
+          @apply text-white;
+          @apply flex items-center gap-2;
+        }
+
+        .reject-button {
+          @apply bg-red-500;
+        }
+
+        .approve-button {
+          @apply bg-blue-500;
+        }
+      }
+    }
+
+    .right-section {
+      @apply max-w-[30%] min-w-[30%];
+      @apply flex flex-col gap-4;
+
+      .company-info {
+        @apply text-sm;
+
+        .name {
+          @apply font-bold;
+        }
+
+        .address {
+          @apply text-gray-400; // NEED MODIFY
+        }
+      }
+
+      .ticket-info-table {
+        @apply text-left text-sm pb-4;
+        @apply border-b border-solid border-gray-200;
+
+        tr {
+          @apply whitespace-nowrap h-14 my-auto;
+          @apply flex items-center;
+        }
+
+        th,
+        td {
+          @apply w-1/2;
+        }
+
+        .customer-info {
+          @apply flex flex-col;
+
+          .name {
+            @apply font-bold;
+          }
+        }
+
+        .request-type {
+          @apply w-fit px-2 py-1;
+          @apply rounded;
+        }
+
+        .time-tracking {
+          @apply flex items-center;
+          @apply gap-2;
+
+          .icon {
+            @apply text-blue-500;
+          }
+        }
+
+        .priority {
+          @apply flex items-center;
+          @apply gap-2;
+        }
+      }
+
+      .create-update-time {
+        .create-time,
+        .update-time {
+          @apply text-sm text-gray-500;
+        }
+      }
+    }
+  }
+}

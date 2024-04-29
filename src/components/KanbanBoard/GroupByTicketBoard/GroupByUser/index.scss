@@ -16,11 +16,7 @@
       }
 
       .username {
-        @apply font-bold text-reverse-primary;
-      }
-
-      .ticket-number {
-        @apply text-reverse-primary;
+        @apply font-bold;
       }
     }
 

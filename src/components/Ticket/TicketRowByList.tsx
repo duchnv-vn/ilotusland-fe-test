@@ -15,7 +15,7 @@ import './TicketRowByList.scss';
 type Props = { ticket: TicketByList };
 
 const TicketRowByList: React.FC<Props> = ({ ticket }) => {
-  const { _id, title, stageId, priority, dueDate, asignee } = ticket;
+  const { _id, title, stageId, priority, dueDate, assignee } = ticket;
 
   const {
     ProjectStore: { findStage },
@@ -49,9 +49,9 @@ const TicketRowByList: React.FC<Props> = ({ ticket }) => {
         </TableCell>
       )}
       <TableCell>{getDateStringByFormat(dueDate)}</TableCell>
-      <TableCell className="asignee">
-        <UserAvatar {...{ src: asignee.avatarUrl, alt: asignee.name }} />
-        <span className="name">{asignee.name}</span>
+      <TableCell className="assignee">
+        <UserAvatar {...{ src: assignee.avatarUrl, alt: assignee.name }} />
+        <span className="name">{assignee.name}</span>
       </TableCell>
     </TableRow>
   );

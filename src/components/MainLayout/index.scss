@@ -11,10 +11,6 @@
 
       .menu-button {
         @apply h-10 w-10 bg-secondary p-3 rounded-full border-0 shadow-none;
-
-        .icon {
-          @apply text-reverse-primary;
-        }
       }
 
       .project-name-container {
@@ -32,7 +28,7 @@
           @apply w-14 h-10;
 
           .icon {
-            @apply text-reverse-primary w-5 h-5;
+            @apply w-5 h-5;
           }
 
           &.active {
