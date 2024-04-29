@@ -9,7 +9,8 @@
     "lint": "next lint",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,md,mdx,css,scss}\"",
     "commit": "git-cz",
-    "deploy:preview": "bash scripts/vercel-preview-deploy.sh"
+    "deploy:preview": "bash scripts/vercel-preview-deploy.sh",
+    "deploy:prod": "bash scripts/vercel-prod-deploy.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",

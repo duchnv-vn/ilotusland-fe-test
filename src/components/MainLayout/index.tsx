@@ -4,10 +4,10 @@ import { Theme } from '@radix-ui/themes';
 import { observer } from 'mobx-react-lite';
 import { useStores } from '@/store/storeProvider';
 import Header from './Header';
-import TicketDetailModalWrapper from '../TicketDetailModal/modalWrapper';
 
 import '@radix-ui/themes/styles.css';
 import './index.scss';
+import TicketDetailModalWrapper from '../TicketDetailModalWrapper';
 
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const {

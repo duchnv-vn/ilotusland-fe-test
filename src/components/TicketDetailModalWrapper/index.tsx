@@ -3,11 +3,11 @@ import React from 'react';
 import { Dialog } from '@radix-ui/themes';
 import { observer } from 'mobx-react-lite';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import TicketDetailModal from '.';
+import TicketDetailModal from '../TicketDetailModal';
 import { useStores } from '@/store/storeProvider';
 import Button from '../ui/button';
 
-import './ModalWrapper.scss';
+import './index.scss';
 
 const TicketDetailModalWrapper = () => {
   const {
