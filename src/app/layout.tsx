@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { StoreWrapper } from '@/store/storeProvider';
+import Auth0ProviderWrapper from '@/components/Auth/Auth0Provider';
 
 import './globals.scss';
 
@@ -19,9 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <StoreWrapper>
-        <body className={inter.className}>{children}</body>
-      </StoreWrapper>
+      <Auth0ProviderWrapper>
+        <StoreWrapper>
+          <body className={inter.className}>{children}</body>
+        </StoreWrapper>
+      </Auth0ProviderWrapper>
     </html>
   );
 }
