@@ -7,6 +7,7 @@ class CommonStore {
   themeMode: ThemeModes | string = '';
   boardType: BoardTypes = 0;
   groupBy: BoardGroupBy | string = '';
+  isOpenTicketModal = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -22,6 +23,10 @@ class CommonStore {
 
   setGroupBy = (type: BoardGroupBy) => {
     this.groupBy = type;
+  };
+
+  setIsOpenTicketModal = (status: boolean) => {
+    this.isOpenTicketModal = status;
   };
 
   hydrate = ({ boardType, mode, groupBy }: CommonStoreData) => {

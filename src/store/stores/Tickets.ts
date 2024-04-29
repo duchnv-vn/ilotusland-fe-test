@@ -3,11 +3,15 @@ import {
   GroupTicketsByUser,
   TicketByBoard,
   TicketByList,
+  TicketDetail,
 } from '@/common/type/ticket.type';
 import { TicketStoreData } from '../type';
+import { dummyTicketsByBoard } from './dummy-data';
 class TicketsStore {
   ticketsByBoard: TicketByBoard[] = [];
   ticketsByList: TicketByList[] = [];
+  activeTicketId: number | null = null;
+  ticketDetail: TicketDetail = dummyTicketsByBoard[0] as TicketDetail;
 
   constructor() {
     makeAutoObservable(this);
@@ -45,6 +49,26 @@ class TicketsStore {
     );
 
     return Object.values(ticketGroups);
+  };
+
+  setActiveTicketId(id: number) {
+    this.activeTicketId = id;
+  }
+
+  fetchTicketDetail = async (id: number) => {
+    this.setActiveTicketId(id);
+    const data: TicketDetail = await new Promise((res) => {
+      setTimeout(() => {
+        res(
+          dummyTicketsByBoard.find(
+            (ticket) => ticket._id === id,
+          ) as TicketDetail,
+        );
+      }, 1000);
+    });
+
+    this.ticketDetail = data;
+    return data;
   };
 
   hydrate = ({ ticketsByBoard, ticketsByList }: TicketStoreData) => {

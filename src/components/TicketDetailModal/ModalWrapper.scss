@@ -1,0 +1,13 @@
+.modal-content {
+  @apply flex flex-col gap-2;
+  @apply min-w-[75%] min-h-[800px];
+
+  .close-button {
+    @apply flex justify-end;
+    @apply border-0 outline-0;
+
+    .icon {
+      @apply w-7 h-7;
+    }
+  }
+}
