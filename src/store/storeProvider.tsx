@@ -31,7 +31,7 @@ export const StoreWrapper = ({ children }: { children: ReactNode }) => {
   });
   const ComonStoreValues = useStore('CommonStore', {
     mode: ThemeModes['theme-light'],
-    boardType: BoardTypes['list'],
+    boardType: BoardTypes['board'],
     groupBy: BoardGroupBy['User'],
   });
   const UserStoreValues = useStore('UserStore', {
