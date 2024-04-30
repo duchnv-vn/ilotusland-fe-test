@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import {
   GroupTicketsByUser,
+  GroupTicketsByUserAndStage,
   TicketByBoard,
   TicketByList,
   TicketDetail,
@@ -12,6 +13,7 @@ class TicketsStore {
   ticketsByList: TicketByList[] = [];
   activeTicketId: number | null = null;
   ticketDetail: TicketDetail = dummyTicketsByBoard[0] as TicketDetail;
+  ticketGroupsByUserAndStage: Record<number, GroupTicketsByUserAndStage> = {};
 
   constructor() {
     makeAutoObservable(this);
@@ -20,6 +22,13 @@ class TicketsStore {
   get totalTickets() {
     return this.ticketsByBoard.length;
   }
+
+  setTicketGroupsByUserAndStage = (
+    groups: Record<string, TicketByBoard[]>,
+    userId: number,
+  ) => {
+    this.ticketGroupsByUserAndStage[userId].ticketsGroupByStage = groups;
+  };
 
   setTicketsByBoard = (tickets: TicketByBoard[]) => {
     this.ticketsByBoard = tickets;
@@ -51,6 +60,37 @@ class TicketsStore {
     return Object.values(ticketGroups);
   };
 
+  groupTicketsByUserAndStage = () => {
+    const ticketGroups = this.ticketsByBoard.reduce(
+      (groups, ticket) => {
+        const groupyUser = groups[ticket.assignee._id];
+
+        if (!groupyUser) {
+          groups[ticket.assignee._id] = {
+            user: ticket.assignee,
+            ticketsGroupByStage: { [ticket.stageId]: [ticket] },
+          };
+        } else {
+          let ticketsGroupByStage =
+            groups[ticket.assignee._id].ticketsGroupByStage[ticket.stageId];
+
+          !ticketsGroupByStage
+            ? (ticketsGroupByStage = [ticket])
+            : ticketsGroupByStage.push(ticket);
+
+          groups[ticket.assignee._id].ticketsGroupByStage[ticket.stageId] =
+            ticketsGroupByStage;
+        }
+
+        return groups;
+      },
+      {} as Record<number, GroupTicketsByUserAndStage>,
+    );
+
+    this.ticketGroupsByUserAndStage = ticketGroups;
+    return ticketGroups;
+  };
+
   setActiveTicketId(id: number) {
     this.activeTicketId = id;
   }
@@ -69,6 +109,12 @@ class TicketsStore {
 
     this.ticketDetail = data;
     return data;
+  };
+
+  findBoardTicketById = (id: number) => {
+    return this.ticketsByBoard.find(
+      (ticket) => ticket._id === id,
+    ) as TicketByBoard;
   };
 
   hydrate = ({ ticketsByBoard, ticketsByList }: TicketStoreData) => {
