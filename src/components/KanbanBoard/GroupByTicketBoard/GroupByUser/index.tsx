@@ -378,7 +378,9 @@ const UserBoard = ({ group }: { group: GroupTicketsByUserAndStage }) => {
           setIsExpand,
         }}
       />
-      {isExpand && <TicketBoards {...{ group }} />}
+      <div className="ticket-boards-wrapper" hidden={!isExpand}>
+        <TicketBoards {...{ group }} />
+      </div>
     </div>
   );
 };
