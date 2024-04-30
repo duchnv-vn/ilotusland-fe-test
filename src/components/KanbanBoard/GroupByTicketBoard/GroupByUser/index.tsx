@@ -362,18 +362,25 @@ const TicketBoards = ({
 
 const UserBoard = ({ group }: { group: GroupTicketsByUserAndStage }) => {
   const [isExpand, setIsExpand] = useState(true);
+  const {
+    TicketsStore: { getTotalTicketsByUser },
+  } = useStores();
+
+  const ticketNumber = getTotalTicketsByUser(group.user._id);
 
   return (
     <div className="user-board">
       <UserBoardHeader
         {...{
           user: group.user,
-          ticketNumber: 0,
+          ticketNumber,
           isExpand,
           setIsExpand,
         }}
       />
-      {isExpand && <TicketBoards {...{ group }} />}
+      <div className="ticket-boards-wrapper" hidden={!isExpand}>
+        <TicketBoards {...{ group }} />
+      </div>
     </div>
   );
 };

@@ -6,13 +6,15 @@ import { useStores } from '@/store/storeProvider';
 import './index.scss';
 
 const Header = ({
-  stage: { name, ticketQuantity },
+  stage: { name },
   className,
+  ticketQuantity,
 }: {
   stage: ProjectStage;
   className: string;
+  ticketQuantity: number;
 }) => {
-  const label = `${name} ${ticketQuantity && `(${ticketQuantity})`}`;
+  const label = `${name} (${ticketQuantity})`;
   return (
     <div className={`item ${className}`}>
       <p className="title">{label.trim()}</p>
@@ -21,19 +23,25 @@ const Header = ({
 };
 
 const StageHeaders = () => {
-  const { ProjectStore } = useStores();
+  const {
+    ProjectStore,
+    TicketsStore: { getTotalTicketsByStage },
+  } = useStores();
 
   return (
     <div className="stage-headers">
-      {ProjectStore.stages.map((stage, index) => (
-        <Header
-          {...{
-            stage,
-            className: `w-[${Math.round(100 / ProjectStore.stages.length)}]`,
-          }}
-          key={index}
-        />
-      ))}
+      {ProjectStore.stages.map((stage, index) => {
+        return (
+          <Header
+            {...{
+              stage,
+              ticketQuantity: getTotalTicketsByStage(stage.id),
+              className: `w-[${Math.round(100 / ProjectStore.stages.length)}]`,
+            }}
+            key={index}
+          />
+        );
+      })}
     </div>
   );
 };

@@ -17,18 +17,6 @@ class ProjectStore {
     makeAutoObservable(this);
   }
 
-  setTicketQuantity = (stages: ProjectStage[]) => {
-    const newStages = stages
-      .map((stage) => {
-        const tickets = dummyTicketsByBoard.filter(
-          (ticket) => ticket.stageId === stage.id,
-        );
-        return { ...stage, ticketQuantity: tickets.length };
-      })
-      .sort((a, b) => a.order - b.order);
-    return newStages;
-  };
-
   setProject = (project: Project) => {
     this.project = project;
   };
@@ -55,8 +43,7 @@ class ProjectStore {
     members && this.setMembers(members);
     if (project) {
       this.setProject(project);
-      const stages = this.setTicketQuantity(project.stages);
-      this.setStages(stages);
+      this.setStages(project.stages);
     }
   };
 }

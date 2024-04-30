@@ -95,6 +95,25 @@ class TicketsStore {
     this.activeTicketId = id;
   }
 
+  getTotalTicketsByUser = (userId: number) => {
+    const ticketGroups =
+      this.ticketGroupsByUserAndStage[userId].ticketsGroupByStage;
+    let totalTickets = 0;
+    Object.values(ticketGroups).forEach(
+      (tickets) => (totalTickets += tickets.length),
+    );
+    return totalTickets;
+  };
+
+  getTotalTicketsByStage = (stageId: number) => {
+    let total = 0;
+    Object.values(this.ticketGroupsByUserAndStage).forEach((groupByUser) => {
+      const groupByStage = groupByUser.ticketsGroupByStage[stageId];
+      groupByStage && (total += groupByStage.length);
+    });
+    return total;
+  };
+
   fetchTicketDetail = async (id: number) => {
     this.setActiveTicketId(id);
     const data: TicketDetail = await new Promise((res) => {
