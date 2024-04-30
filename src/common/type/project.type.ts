@@ -2,7 +2,6 @@ export type ProjectStage = {
   id: number;
   name: string;
   order: number;
-  ticketQuantity?: number;
 };
 
 export type ProjectRequestType = {
