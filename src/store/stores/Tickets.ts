@@ -95,6 +95,18 @@ class TicketsStore {
     this.activeTicketId = id;
   }
 
+  getTotalTicketsByUser = (userId: number) => {
+    const ticketGroups =
+      this.ticketGroupsByUserAndStage[userId].ticketsGroupByStage;
+
+    let totalTickets = 0;
+    Object.values(ticketGroups).forEach(
+      (tickets) => (totalTickets += tickets.length),
+    );
+
+    return totalTickets;
+  };
+
   fetchTicketDetail = async (id: number) => {
     this.setActiveTicketId(id);
     const data: TicketDetail = await new Promise((res) => {
