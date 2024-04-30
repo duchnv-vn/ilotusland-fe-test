@@ -53,3 +53,10 @@ export type GroupTicketsByUser = {
   tickets: TicketByBoard[];
   user: User;
 };
+
+export type GroupTicketsByUserAndStage = {
+  ticketsGroupByStage: Record<string, TicketByBoard[]>;
+  user: User;
+};
+
+export type BoardTicketProps = TicketByBoard & { requestTypeName: string };

@@ -112,7 +112,7 @@ export const dummyTicketsByBoard = [
     reporter: dummyAssignee1,
     customer: dummyCustomer,
     company: dummyCompany,
-    stageId: 2,
+    stageId: 0,
     description:
       'Dear Service Team,\nHiện tại dữ liệu....\nTeam trao đổi cho mình phương án triển khai.',
     requestTypeId: 1,
