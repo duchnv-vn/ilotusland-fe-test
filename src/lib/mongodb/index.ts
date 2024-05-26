@@ -1,6 +1,6 @@
+import { MONGODB_URI } from '@/config/env';
 import { MongoClient } from 'mongodb';
 
-const uri = process.env.MONGODB_URI as string;
 const options = {};
 
 class Singleton {
@@ -9,7 +9,7 @@ class Singleton {
   private clientPromise: Promise<MongoClient>;
 
   private constructor() {
-    this.client = new MongoClient(uri, options);
+    this.client = new MongoClient(MONGODB_URI, options);
     this.clientPromise = this.client.connect();
   }
 
