@@ -1,6 +1,6 @@
 import postgres from 'postgres';
-import { DATABASE_SESSION_MODE_URL } from '@/config/env';
+import { DB_SESSION_MODE_URL } from '@/config/env';
 
-const sql = postgres(DATABASE_SESSION_MODE_URL);
+const sql = postgres(DB_SESSION_MODE_URL);
 
 export default sql;
