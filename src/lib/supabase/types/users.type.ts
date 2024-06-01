@@ -1,3 +1,3 @@
-import { Tables } from 'database.types';
+import { Tables } from './database.type';
 
 export type User = Tables<'users'>;

@@ -1,6 +1,6 @@
 import { SupabaseClientOptions, createClient } from '@supabase/supabase-js';
 import { SUPABASE_API_KEY, SUPABASE_PROJECT_URL } from '@/config/env';
-import { Database } from 'database.types';
+import { Database } from './types/database.type';
 import { TableNames } from './types/db.type';
 
 const getSupabase = (access_token: string) => {
